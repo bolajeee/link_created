@@ -12,12 +12,13 @@ import {
   Divider,
   IconButton,
 } from "@chakra-ui/react";
-import { X } from "lucide-react";
+import { CheckCircle, X } from "lucide-react";
+import countries from "./countries";
 
 import FlutterwaveLogo from "./makePaymentAssets/flutterwave_logo.png";
 import MonifyLogo from "./makePaymentAssets/monnify_logo.png";
 import PaypalLogo from "./makePaymentAssets/paypal_logo.png";
-import quicktellerLogo from "./makePaymentAssets/quickteller_logo.png";
+import QuicktellerLogo from "./makePaymentAssets/quickteller_logo.png";
 import Check from "./makePaymentAssets/check.png";
 
 const MakePaymentPage = ({ onClose }) => {
@@ -28,6 +29,13 @@ const MakePaymentPage = ({ onClose }) => {
   const handlePaymentMethodSelect = (method) => {
     setSelectedPaymentMethod(method);
   };
+
+   const paymentMethods = [
+     { src: FlutterwaveLogo, name: "Flutterwave" },
+     { src: PaypalLogo, name: "PayPal" },
+     { src: QuicktellerLogo, name: "Quickteller" },
+     { src: MonifyLogo, name: "Monify" },
+   ];
 
   return (
     <Box w="100vw" h="100vh" bg="gray.50">
@@ -112,8 +120,17 @@ const MakePaymentPage = ({ onClose }) => {
               </Text>
               <Grid templateColumns="repeat(4, 1fr)" gap={2}>
                 <Select defaultValue="NGN" size="sm" bg="gray.50">
-                  <option value="NGN">NGN ₦</option>
-                  <option value="USD">USD $</option>
+                  {countries.map((country) => (
+                    <option key={country.code} value={country.currency}>
+                      {country.currency}{" "}
+                      <Image
+                        src={country.flag}
+                        alt={country.name}
+                        width="16px"
+                        height="12px"
+                      />
+                    </option>
+                  ))}
                 </Select>
                 <Input placeholder="0.00" size="sm" bg="gray.50" />
                 <Select defaultValue="NG" size="sm" bg="gray.50">
@@ -129,60 +146,36 @@ const MakePaymentPage = ({ onClose }) => {
 
             {/* Payment Options */}
             <Grid templateColumns="repeat(4, 1fr)" gap={4} w="full" pt={2}>
-              <Button
-                p={4}
-                border="1px"
-                borderColor="gray.200"
-                borderRadius="md"
-                cursor="pointer"
-                onClick={() =>
-                  handlePaymentMethodSelect({
-                    src: FlutterwaveLogo,
-                    name: "Flutterwave",
-                  })
-                }
-              >
-                <Image src={FlutterwaveLogo} alt="Payment option 1" />
-              </Button>
-              <Button
-                p={4}
-                border="1px"
-                borderColor="gray.200"
-                borderRadius="md"
-                cursor="pointer"
-                onClick={() =>
-                  handlePaymentMethodSelect({ src: PaypalLogo, name: "PayPal" })
-                }
-              >
-                <Image src={PaypalLogo} alt="Payment option 2" />
-              </Button>
-              <Button
-                p={4}
-                border="1px"
-                borderColor="gray.200"
-                borderRadius="md"
-                cursor="pointer"
-                onClick={() =>
-                  handlePaymentMethodSelect({
-                    src: quicktellerLogo,
-                    name: "Quickteller",
-                  })
-                }
-              >
-                <Image src={quicktellerLogo} alt="Payment option 3" />
-              </Button>
-              <Button
-                p={4}
-                border="1px"
-                borderColor="gray.200"
-                borderRadius="md"
-                cursor="pointer"
-                onClick={() =>
-                  handlePaymentMethodSelect({ src: MonifyLogo, name: "Monify" })
-                }
-              >
-                <Image src={MonifyLogo} alt="Payment option 4" />
-              </Button>
+              {paymentMethods.map((method) => (
+                <Button
+                  key={method.name}
+                  p={4}
+                  border="2px"
+                  borderColor={
+                    selectedPaymentMethod === method.name
+                      ? "green.400"
+                      : "gray.200"
+                  }
+                  borderRadius="md"
+                  cursor="pointer"
+                  position="relative"
+                  onClick={() => handlePaymentMethodSelect(method)}
+                >
+                  <Image src={method.src} alt={method.name} />
+
+                  {/* Checkmark Icon */}
+                  {selectedPaymentMethod === method.name && (
+                    <Box
+                      position="absolute"
+                      top="2px"
+                      right="2px"
+                      color="green.500"
+                    >
+                      <CheckCircle size={20} />
+                    </Box>
+                  )}
+                </Button>
+              ))}
             </Grid>
 
             <Button
