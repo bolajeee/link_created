@@ -2,7 +2,7 @@ import { Box, Divider, Text, Stack, CloseButton, Flex, VStack, CheckboxGroup, Im
 import { CheckboxCard } from "../ui/checkbox-card";
 
 // Import images directly
-import singlePaymentImg from "../transactionConfirmationUi/paymentAssets/Payment4.png";
+import singlePaymentImg from "../transactionConfirmationUi/paymentAssets/payment4.png";
 import recurringPaymentImg from "../transactionConfirmationUi/paymentAssets/Link4.png";
 import paymentLinkImg from "../transactionConfirmationUi/paymentAssets/Link5.png";
 
