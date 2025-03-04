@@ -8,16 +8,17 @@ import MakePaymentPage from "./components/transactionConfirmationUI/makePaymentP
 import Group26951 from "./components/transactionConfirmationUI/Group26951";
 
 
+
 function App() {
   return (
     <ChakraProvider>
       <Payment />
       <PaymentType />
+      <Group26951 />
       <CreatePaymentLink />
       <PaymentSuccessMessage />
       <PaymentLinkPage />
       <MakePaymentPage />
-      <Group26951 />
     </ChakraProvider>
   );
 }

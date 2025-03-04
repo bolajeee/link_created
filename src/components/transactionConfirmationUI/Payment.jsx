@@ -27,7 +27,6 @@ import {
   CopyIcon,
 } from "@chakra-ui/icons";
 
-           
 const Payment = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedOption, setSelectedOption] = useState("Newest");
@@ -184,140 +183,38 @@ const Payment = () => {
   const endItem = Math.min(currentPage * itemsPerPage, paymentData.length);
 
   return (
-    <Box w="100vw" h="100vh" bg="#F8F8F8" overflow="hidden">
-      <Flex h="full">
-        {/* Sidebar */}
-
-        {/*         
-        <VStack
-          w="233px"
-          h="90vh"
-          bg="white"
-          p={3}
-          spacing={2}
-          align="start"
-          borderRight="1px solid #EEEEEE"
-        >
-          <Flex w="full" align="center" justify="space-between" mb={2}>
-            <Flex align="center" gap={2}>
-              <Image src={Logo} alt="Logo" w="24px" h="24px" />
-              <Text fontSize="16px" fontWeight="500" color="#424141">
-                PEDMONIE
-              </Text>
-            </Flex>
-            <Image src={Toogle} alt="Toggle" w="24px" h="24px" />
-          </Flex>
-          <Divider />
-
-         
-          <Text fontSize="xs" color="#637381" fontWeight="500" pt={2}>
-            GENERAL
-          </Text>
-
-          {[
-            { icon: Overview, text: "Overview" },
-            { icon: Analytics, text: "Analytics" },
-            { icon: Transactions, text: "Transactions" },
-            { icon: Payments, text: "Payment", isActive: true },
-            { icon: Subscription, text: "Subscription" },
-            { icon: Support, text: "Support" },
-          ].map((item) => (
-            <Button
-              key={item.text}
-              variant="ghost"
-              w="full"
-              h="36px"
-              justifyContent="flex-start"
-              leftIcon={
-                <Image
-                  src={item.icon}
-                  alt={`${item.text} Icon`}
-                  w="20px"
-                  h="20px"
-                  filter="grayscale(100%) brightness(100) invert(1)"
-                />
-              }
-              bg={item.isActive ? "#2E5C38" : "transparent"}
-              _hover={{ bg: "#2E5C38", color: "#ffffff" }}
-            >
-              <Text
-                fontSize="14px"
-                color={item.isActive ? "#ffffff" : "#5F5C5C"}
-              >
-                {item.text}
-              </Text>
-            </Button>
-          ))}
-
-          <Divider mt={2} />
-          <Text fontSize="xs" color="#424141" fontWeight="500" pt={2}>
-            SETTINGS
-          </Text>
-
-          <Button
-            variant="ghost"
-            w="full"
-            h="36px"
-            justifyContent="flex-start"
-            leftIcon={
-              <Image
-                src={Settings}
-                alt="Settings Icon"
-                w="20px"
-                h="20px"
-                filter="grayscale(100%) brightness(100) invert(1)"
-              />
-            }
-          >
-            <Text fontSize="14px" color="#5F5C5C">
-              Settings
-            </Text>
-          </Button>
-
-          <Button
-            variant="ghost"
-            w="full"
-            h="36px"
-            justifyContent="flex-start"
-            leftIcon={
-              <Image
-                src={Logout}
-                alt="Logout Icon"
-                w="20px"
-                h="20px"
-                filter="grayscale(100%) brightness(100) invert(1)"
-              />
-            }
-            mt="auto"
-          >
-            <Text fontSize="14px" color="#5F5C5C">
-              Logout
-            </Text>
-          </Button>
-      </VStack> 
-
-*/}
+    <Box w="100%" h="100vh" bg="#F8F8F8" overflow="hidden">
+      <Flex direction={{ base: "column", md: "row" }} h="full">
+        {/* Sidebar (commented out for now) */}
+        {/* <Sidebar /> */}
 
         {/* Main Content */}
         <Box flex={1} p={4} overflow="auto">
-          <Flex justify="space-between" align="center" mb={4}>
-            <VStack align="start" spacing={1}>
-              <Text
-                color="#313431"
-                fontSize="20px"
-                fontFamily="Inter"
-                fontWeight="500"
-                wordBreak="break-word"
-                textShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
-              >
-                Payment
-              </Text>
-            </VStack>
+          <Flex
+            direction={{ base: "column", md: "row" }}
+            justify="space-between"
+            align="center"
+            mb={4}
+          >
+            <Text
+              color="#313431"
+              fontSize={{ base: "18px", md: "20px" }}
+              fontFamily="Inter"
+              fontWeight="500"
+              wordBreak="break-word"
+              textShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
+            >
+              Payment
+            </Text>
 
             {/* Search and Action Buttons */}
-            <Flex gap={4} align="center">
+            <Flex
+              direction={{ base: "column", md: "row" }}
+              gap={4}
+              align="center"
+            >
               <Box
-                w="216px"
+                w={{ base: "100%", md: "216px" }}
                 h="50px"
                 bg="white"
                 border="1px solid #CCCCCC"
@@ -343,7 +240,7 @@ const Payment = () => {
               </Box>
               <Flex
                 h="50px"
-                w="180px"
+                w={{ base: "100%", md: "180px" }}
                 bg="white"
                 border="1px solid #CCCCCC"
                 borderRadius="8px"
@@ -351,7 +248,6 @@ const Payment = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                align="center"
                 gap={2}
               >
                 <Text
@@ -359,7 +255,6 @@ const Payment = () => {
                   fontWeight="400"
                   color="#A7A7A7"
                   whiteSpace="nowrap"
-                  minW="max-content"
                 >
                   Sort by:
                 </Text>
@@ -378,7 +273,7 @@ const Payment = () => {
             </Flex>
           </Flex>
 
-          <Box borderRadius="md" overflow="hidden" width="95%" align="center">
+          <Box borderRadius="md" overflow="hidden" width="100%" align="center">
             {/* Top buttons */}
             <Box align="right">
               <Flex align="center" justify="space-between" py={8}>
@@ -470,7 +365,7 @@ const Payment = () => {
           <Flex align="right" justify="space-between" mt={4} gap={1}>
             <Box>
               <Text
-                w="253px"
+                w="auto"
                 color="#B5B7C0"
                 fontSize="14px"
                 fontFamily="Inter"
