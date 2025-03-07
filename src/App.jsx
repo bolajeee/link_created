@@ -6,6 +6,7 @@ import PaymentSuccessMessage from "./components/transactionConfirmationUI/Paymen
 import PaymentLinkPage from "./components/transactionConfirmationUI/PaymentLinkPage";
 import MakePaymentPage from "./components/transactionConfirmationUI/makePaymentPage";
 import Group26951 from "./components/transactionConfirmationUI/Group26951";
+import TransactionHistory from "./components/transactionConfirmationUI/TransactionHistory";
 
 
 
@@ -19,6 +20,7 @@ function App() {
       <PaymentSuccessMessage />
       <PaymentLinkPage />
       <MakePaymentPage />
+      <TransactionHistory />
     </ChakraProvider>
   );
 }
