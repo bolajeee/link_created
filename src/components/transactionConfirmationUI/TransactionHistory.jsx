@@ -26,7 +26,7 @@ import {
     MenuList,
     MenuItem,
 } from "@chakra-ui/react";
-import { SearchIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, MoreVertical } from "lucide-react";
+import { SearchIcon, ChevronDownIcon, ChevronLeft, ChevronRight, MoreVertical } from "lucide-react";
 
 const transactions = [
     { id: "456789356", date: "Sep 9, 2024, 04:30pm", from: "Darrell Steward", type: "Transfer", amount: 5670, status: "Pending" },
@@ -38,7 +38,7 @@ const transactions = [
     { id: "456789356", date: "Sep 8, 2024, 03:13pm", from: "Arlene McCoy", type: "Transfer", amount: 15000, status: "Completed" },
     { id: "456789356", date: "Sep 7, 2024, 1:00pm", from: "Bessie Cooper", type: "Card", amount: -3456, status: "Cancelled" },
     { id: "456789356", date: "Sep 6, 2024, 07:00am", from: "kikikarishma@email.com", type: "Income", amount: 30000, status: "Pending" },
- 
+
 ];
 
 const TransactionHistory = () => {
@@ -68,7 +68,7 @@ const TransactionHistory = () => {
     const renderPaginationButtons = () => {
         const buttons = [];
         const maxButtonsToShow = 5; // Maximum number of page buttons to show
-        
+
         // Always show first page
         buttons.push(
             <Button
@@ -82,21 +82,21 @@ const TransactionHistory = () => {
                 1
             </Button>
         );
-        
+
         // Calculate range of pages to show
         let startPage = Math.max(2, currentPage - Math.floor(maxButtonsToShow / 2));
         let endPage = Math.min(totalPages - 1, startPage + maxButtonsToShow - 3);
-        
+
         // Adjust start if we're near the end
         if (endPage === totalPages - 1) {
             startPage = Math.max(2, endPage - (maxButtonsToShow - 3));
         }
-        
+
         // Add ellipsis after first page if needed
         if (startPage > 2) {
             buttons.push(<Text key="ellipsis-1" mx={1}>...</Text>);
         }
-        
+
         // Add middle pages
         for (let i = startPage; i <= endPage; i++) {
             buttons.push(
@@ -112,12 +112,12 @@ const TransactionHistory = () => {
                 </Button>
             );
         }
-        
+
         // Add ellipsis before last page if needed
         if (endPage < totalPages - 1) {
             buttons.push(<Text key="ellipsis-2" mx={1}>...</Text>);
         }
-        
+
         // Always show last page if it exists and is not the first page
         if (totalPages > 1) {
             buttons.push(
@@ -133,7 +133,7 @@ const TransactionHistory = () => {
                 </Button>
             );
         }
-        
+
         return buttons;
     };
 
@@ -324,7 +324,7 @@ const TransactionHistory = () => {
                     </Text>
                     <Flex align="center">
                         <IconButton
-                            icon={<ChevronLeftIcon size={16} />}
+                            icon={<ChevronLeft size={16} />}
                             variant="outline"
                             size="sm"
                             mr={2}
@@ -334,7 +334,7 @@ const TransactionHistory = () => {
                         />
                         {renderPaginationButtons()}
                         <IconButton
-                            icon={<ChevronRightIcon size={16} />}
+                            icon={<ChevronRight size={16} />}
                             variant="outline"
                             size="sm"
                             ml={2}
